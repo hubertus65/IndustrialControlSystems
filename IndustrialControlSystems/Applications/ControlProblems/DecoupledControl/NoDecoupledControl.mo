@@ -10,7 +10,7 @@ model NoDecoupledControl "Control scheme without decoupler"
     P12_num={0.5},
     P21_num={0.5},
     P21_den={3,1})
-    annotation (Placement(transformation(extent={{40,0},{80,40}})));
+    annotation (Placement(transformation(extent={{40.0,0.0},{80.0,40.0}},rotation = 0.0,origin = {0.0,0.0})));
   Controllers.PI controller1(
     useBIAS=false,
     Ti=5,

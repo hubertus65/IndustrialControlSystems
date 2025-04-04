@@ -27,7 +27,7 @@ algorithm
   end when;
 
   // Random sample generator algorithm
-  when noEvent(sample(0,Ts)) then
+  when sample(0,Ts) then
        X := (a*X+c)-div((a*X+c),m)*m;
        U := (X/2e9-0.5)*amp;
        y := (Tf*y+Ts*U)/(Tf+Ts);

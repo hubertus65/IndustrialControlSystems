@@ -1,4 +1,4 @@
-within IndustrialControlSystems.Applications.TrasferFunctions;
+within IndustrialControlSystems.Applications.TransferFunctions;
 model TypicalTF
   "This model contains a set of typical process transfer functions"
   parameter Real mu_FO = 1 "Gain"

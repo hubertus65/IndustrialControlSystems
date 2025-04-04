@@ -48,8 +48,8 @@ equation
     td,
     alfa,
     m,
-    u[1],
-    u[2]);
+    u_set[1],
+    u_set[2]);
 
   // No Fixed Point here
   Ufp = zeros(nInput);

@@ -1,5 +1,5 @@
 within IndustrialControlSystems.Applications;
-package TrasferFunctions "Typical transfer functions"
+package TransferFunctions "Typical transfer functions"
   extends Modelica.Icons.Package;
 
 
@@ -11,4 +11,4 @@ info="
   This sub-package contain a list of trasfer functions that represent a variety of industrial processes.<br>
   </p>
   </HTML>"));
-end TrasferFunctions;
+end TransferFunctions;

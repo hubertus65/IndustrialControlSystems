@@ -2,12 +2,12 @@ within IndustrialControlSystems.Applications.ControlProblems;
 model ProcessControl "PID control of typical processes"
   extends Modelica.Icons.Example;
 
-  IndustrialControlSystems.Applications.TrasferFunctions.TypicalTF NoControl(delay_FOD=
+  IndustrialControlSystems.Applications.TransferFunctions.TypicalTF NoControl(delay_FOD=
        1, delay_iD=1)
     annotation (Placement(transformation(extent={{40,120},{100,220}})));
   Modelica.Blocks.Sources.Step step
     annotation (Placement(transformation(extent={{-100,190},{-80,210}})));
-  IndustrialControlSystems.Applications.TrasferFunctions.TypicalTF Controlled(delay_FOD=
+  IndustrialControlSystems.Applications.TransferFunctions.TypicalTF Controlled(delay_FOD=
        1, delay_iD=1)
     annotation (Placement(transformation(extent={{38,8},{98,108}})));
   Controllers.PID

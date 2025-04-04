@@ -2,13 +2,13 @@ within IndustrialControlSystems.Applications.ControlProblems;
 model ATProcessControl "PI control of typical processes, with automatic tuning"
   extends Modelica.Icons.Example;
 
-  IndustrialControlSystems.Applications.TrasferFunctions.TypicalTF NoControl(delay_FOD=
+  IndustrialControlSystems.Applications.TransferFunctions.TypicalTF NoControl(delay_FOD=
        1, delay_iD=1)
     annotation (Placement(transformation(extent={{0,132},{40,212}})));
   Modelica.Blocks.Sources.TimeTable
                                step(table=[0,0; 0,0.6; 400,0.6; 400,1; 600,1])
     annotation (Placement(transformation(extent={{-100,190},{-80,210}})));
-  IndustrialControlSystems.Applications.TrasferFunctions.TypicalTF Controlled(delay_FOD=
+  IndustrialControlSystems.Applications.TransferFunctions.TypicalTF Controlled(delay_FOD=
        1, delay_iD=1)
     annotation (Placement(transformation(extent={{60,44},{100,124}})));
   Controllers.AutoTuning.ATPIrelayNCmixedMode
