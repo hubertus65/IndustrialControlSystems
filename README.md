@@ -25,3 +25,9 @@ Version 2.0.0 is the same as 1.2.0 but it works with MSL 4.0.0. Technically spea
 #### Main authors
 
 Marco Bonvini and Alberto Leva
+
+#### Minor fixes (2025-04-04, Hubertus Tummescheit, Model Based Innovation LLC)
+
+ - Replaced illegal used of conditional component with legal use to make library compatible with Modelon Impact
+ - Removed an illegal use of noEvent()-oeprator in when-clause
+ - All models compile and give smoke-test-sensible results in Modelon Impact. 
