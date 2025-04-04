@@ -30,4 +30,5 @@ Marco Bonvini and Alberto Leva
 
  - Replaced illegal used of conditional component with legal use to make library compatible with Modelon Impact
  - Removed an illegal use of noEvent()-oeprator in when-clause
- - All models compile and give smoke-test-sensible results in Modelon Impact. 
+ - All models compile and give smoke-test-sensible results in Modelon Impact.
+ - Fixed typo, TrasferFunction to TransferFunction
