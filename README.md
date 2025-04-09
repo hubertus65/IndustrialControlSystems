@@ -30,5 +30,6 @@ Marco Bonvini and Alberto Leva
 
  - Replaced illegal used of conditional component with legal use to make library compatible with Modelon Impact
  - Removed an illegal use of noEvent()-operator in when-clause
+ - Added size info for one function output to make it more readable
  - All models compile and give smoke-test-sensible results in Modelon Impact.
  - Fixed typo, TrasferFunction to TransferFunction
