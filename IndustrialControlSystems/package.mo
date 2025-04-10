@@ -9,7 +9,7 @@ package IndustrialControlSystems "Modelica Industrial Control Systems Library"
 </p>
 </html>"),
     uses(Modelica(version="4.0.0")),
-    version="2.0.0",
+    version="2.0.1",
     conversion(from(
 	  version={"1.2.0","1.1.0"},
 	  script="modelica://IndustrialControlSystems/Resources/Conversion/ConvertFromIndustrialControlSystems_1.2.0.mos")));
