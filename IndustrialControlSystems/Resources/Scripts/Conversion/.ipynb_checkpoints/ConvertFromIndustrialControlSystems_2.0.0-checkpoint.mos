@@ -1,0 +1,3 @@
+// Update Typo in Classname
+convertClass("IndustrialControlSystems.Applications.TrasferFunctions",
+              "IndustrialControlSystems.Applications.TransferFunctions");

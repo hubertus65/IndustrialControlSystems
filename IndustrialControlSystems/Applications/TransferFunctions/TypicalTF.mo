@@ -361,7 +361,7 @@ equation
   </td>
   </tr>
   </table><br><br>
-  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TrasferFunction/Integrator.png\"><br>
+  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TransferFunction/Integrator.png\"><br>
   
   <br/>
   <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
@@ -375,7 +375,7 @@ equation
   </td>
   </tr>
   </table><br><br>
-  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TrasferFunction/Int+Delay.png\"><br>
+  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TransferFunction/Int+Delay.png\"><br>
   
   <br/>
   <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
@@ -389,7 +389,7 @@ equation
   </td>
   </tr>
   </table><br><br>
-  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TrasferFunction/FirstOrder.png\"><br>
+  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TransferFunction/FirstOrder.png\"><br>
   
   <br/>
   <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
@@ -403,7 +403,7 @@ equation
   </td>
   </tr>
   </table><br><br>
-  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TrasferFunction/FirstOrder+Delay.png\"><br>
+  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TransferFunction/FirstOrder+Delay.png\"><br>
   </p>
   
   <br/>
@@ -418,7 +418,7 @@ equation
   </td>
   </tr>
   </table><br><br>
-  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TrasferFunction/FastSlow.png\"><br>
+  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TransferFunction/FastSlow.png\"><br>
   
   <br/>
   <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
@@ -446,7 +446,7 @@ equation
   </td>
   </tr>
   </table><br><br>
-  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TrasferFunction/UnderShooting.png\"><br>
+  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TransferFunction/UnderShooting.png\"><br>
   
   <br/>
   <TABLE BORDER=1 CELLSPACING=0 CELLPADDING=2 >
@@ -460,7 +460,7 @@ equation
   </td>
   </tr>
   </table><br><br>
-  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TrasferFunction/ComplexPoles.png\"><br>
+  <img src=\"modelica://IndustrialControlSystems/help/images/Applications/TransferFunction/ComplexPoles.png\"><br>
   
   </HTML>",
           revisions="<html>
