@@ -29,3 +29,6 @@ dymosim.lib
 
 # Python compiled files #
 *.pyc
+
+# Jupyter Notebook temp files #
+.ipynb_checkpoints
