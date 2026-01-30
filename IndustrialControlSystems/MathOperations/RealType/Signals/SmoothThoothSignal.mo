@@ -71,7 +71,7 @@ equation
   <p>
   Model of a smooth thooth signal.
   <br><br>
-  <img src=\"modelica://IndustrialControlSystems/help/images/Math/RealType/Signals/SmoothThoothSignal.png\">
+  <img src=\"modelica://IndustrialControlSystems/Resources/Images/Math/RealType/Signals/SmoothThoothSignal.png\">
   <br><br>
   The output ( <FONT FACE=Courier>y</FONT> ) remains at its initial value <FONT FACE=Courier>yin</FONT> 
   until the enabling input <FONT FACE=Courier>ENup</FONT> remains <FONT FACE=Courier>false</FONT>.<br>
