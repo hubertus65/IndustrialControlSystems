@@ -12,9 +12,6 @@ package IndustrialControlSystems "Modelica Industrial Control Systems Library"
     version="2.0.1",
     conversion(from(
 	  version={"1.2.0","1.1.0"},
-	  script="modelica://IndustrialControlSystems/Resources/Scripts/Conversion/ConvertFromIndustrialControlSystems_1.2.0.mos")),
-    conversion(from(
-      version={"2.0.0"},
-      script="modelica://IndustrialControlSystems/Resources/Scripts/Conversion/ConvertFromIndustrialControlSystems_2.0.0.mos")) 
-    );
+	  script="modelica://IndustrialControlSystems/Resources/Scripts/Conversion/ConvertFromIndustrialControlSystems_1.2.0.mos"),
+	  noneFromVersion="2.0.0"));
 end IndustrialControlSystems;
