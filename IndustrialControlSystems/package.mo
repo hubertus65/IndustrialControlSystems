@@ -8,7 +8,7 @@ package IndustrialControlSystems "Modelica Industrial Control Systems Library"
 
 </p>
 </html>"),
-    uses(Modelica(version="4.0.0")),
+    uses(Modelica(version="4.1.0")),
     version="2.0.1",
     conversion(from(
 	  version={"1.2.0","1.1.0"},
