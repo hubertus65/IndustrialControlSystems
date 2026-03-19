@@ -1,5 +1,5 @@
 within IndustrialControlSystems.MathOperations.RealType.Signals;
-model SmoothThooth "Smooth thooth Set point generator"
+model SmoothTooth "Smooth tooth Set point generator"
   extends Interfaces.RealNinOperation(final useInputs=false, final FixedPoint=false, final Nbit = 1, final scaleFactor = 1, final MAX = 1, final MIN = 0);
   parameter Real ts = 10 "Initial rising time"
     annotation(Dialog(group = "Smooth step"));
@@ -72,4 +72,4 @@ equation
 <dd>Copyright &copy; 2010-2012, Marco Bonvini and Alberto Leva.<br/></dd>
 <dd><i>The IndustrialControlSystems package is <b>free</b> software; it can be redistributed and/or modified under the terms of the <b>Modelica license</b>.</i><br/></dd>
 </dl></html>"));
-end SmoothThooth;
+end SmoothTooth;
