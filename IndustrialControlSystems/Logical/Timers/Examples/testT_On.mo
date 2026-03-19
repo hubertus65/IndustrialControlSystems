@@ -1,5 +1,6 @@
 within IndustrialControlSystems.Logical.Timers.Examples;
 model testT_On
+  "Test of the T_on-delay timer block"
   extends Modelica.Icons.Example;
 
   IndustrialControlSystems.Logical.Timers.Timer_On timer

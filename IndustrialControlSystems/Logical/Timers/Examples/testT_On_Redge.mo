@@ -1,5 +1,6 @@
 within IndustrialControlSystems.Logical.Timers.Examples;
 model testT_On_Redge
+  "Test of the T_on-delay timer with rising edge detection"
   extends Modelica.Icons.Example;
 
   IndustrialControlSystems.Logical.Timers.Timer_On_Redge timer

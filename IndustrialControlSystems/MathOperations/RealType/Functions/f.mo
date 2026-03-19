@@ -1,5 +1,6 @@
 within IndustrialControlSystems.MathOperations.RealType.Functions;
 function f
+  "Smooth step transition between two values, controlled by up/down signals"
   input Boolean up;
   input Boolean down;
   input Real t;

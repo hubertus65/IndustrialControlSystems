@@ -1,5 +1,6 @@
 within IndustrialControlSystems.Logical.Timers.Examples;
 model testT_OffDelay_Fedge
+  "Test of the T_off-delay timer triggered on a falling edge"
   extends Modelica.Icons.Example;
 
   IndustrialControlSystems.Logical.Timers.Timer_OffDelay_Fedge timer

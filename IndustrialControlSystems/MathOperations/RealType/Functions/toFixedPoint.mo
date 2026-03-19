@@ -1,5 +1,6 @@
 within IndustrialControlSystems.MathOperations.RealType.Functions;
 function toFixedPoint
+  "Converts a real value to a saturated fixed-point integer"
   input Real u;
   input Real scaleFactor;
   input Integer MAX;
