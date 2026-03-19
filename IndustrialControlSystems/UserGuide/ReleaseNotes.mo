@@ -11,7 +11,7 @@ held in Munich 3-5 September 2012. The library won the 2nd prize at the Modelica
 <p>Main authors: Marco Bonvini and Alberto Leva 2010-2012.</p>
 <p>Maintenance contributors: Thomas Beutlich, Francesco Casella, Peter Harman, Matthis Thorade, Martin Sjoelund, Dietmar Winkler, Hubertus Tummescheit.</p>
 
-<p>Version 2.0.1 Apr. 10, 2025. Made compatible with Modelon Impact by removing a few minor compliance errors. Also fixed a name-typo.</p>
+<p>Version 2.0.1 Mar. 18, 2026 Made compatible with Modelon Impact by removing a few minor compliance errors. Also fixed name-typos, and updated to MSL 4.1.0.</p>
 
 <p>Version: 2.0.0 Aug 7, 2024: Maintenance release, update to Modelica 4.0.0 Version 2.0.0 is the same as 1.2.0 but it works with MSL 4.0.0. 
 Technically speaking it is not backwards compatible with 1.2.0 because it depends on the non-backwards compatible MSL 4.0.0, 
