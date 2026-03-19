@@ -111,7 +111,7 @@ equation
   <br>
   <img src=\"modelica://IndustrialControlSystems/Resources/Images/Applications/ControlProblems/DecoupledController/Decoupler3.png\"><br><br>
   
-  Once the process is known (P11,P21,P21,P22), the decoupler can be specified by the definition of the two rational trasfer functions
+  Once the process is known (P11,P21,P21,P22), the decoupler can be specified by the definition of the two rational transfer functions
   <pre>
   P12(s)
   ------ 
