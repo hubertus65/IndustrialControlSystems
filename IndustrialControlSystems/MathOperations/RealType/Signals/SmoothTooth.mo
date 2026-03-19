@@ -43,7 +43,7 @@ equation
   <p>
   Model of a smooth thooth signal.
   <br><br>
-  <img src=\"modelica://IndustrialControlSystems/Resources/Images/Math/RealType/Signals/SmoothThooth.png\">
+  <img src=\"modelica://IndustrialControlSystems/Resources/Images/Math/RealType/Signals/SmoothTooth.png\">
   <br><br>
   The output ( <FONT FACE=Courier>y</FONT> ) remains at its initial value <FONT FACE=Courier>yin</FONT> until time 
   is equal to <FONT FACE=Courier>ts</FONT>.<br>
