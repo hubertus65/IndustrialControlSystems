@@ -1,5 +1,5 @@
 within IndustrialControlSystems.MathOperations.RealType.Signals;
-model SmoothThoothSignal "Smooth thooth Set Point generator, driven by signals"
+model SmoothToothSignal "Smooth tooth Set Point generator, driven by signals"
   extends Interfaces.RealNinOperation(final useInputs=true,final nInput = 2, final FixedPoint=false, final Nbit = 1, final scaleFactor = 1, final MAX = 1, final MIN = 0);
   Modelica.Blocks.Interfaces.BooleanInput ENup annotation (Placement(
         transformation(extent={{-100,36},{-60,76}}), iconTransformation(extent={{-100,40},
@@ -102,4 +102,4 @@ equation
 <dd><i>The IndustrialControlSystems package is <b>free</b> software; it can be redistributed and/or modified under the terms of the <b>Modelica license</b>.</i><br/></dd>
 </dl></html>"),
     Diagram(graphics));
-end SmoothThoothSignal;
+end SmoothToothSignal;
