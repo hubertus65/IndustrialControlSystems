@@ -32,3 +32,5 @@ dymosim.lib
 
 # Jupyter Notebook temp files #
 .ipynb_checkpoints
+# Files only for Modelon Impact, when developing for all tools
+Resources/

@@ -1,5 +1,5 @@
 within IndustrialControlSystems.Logical.LogicalOperations.Examples;
-model FliFlop "Flip Flop test"
+model FlipFlop "Flip Flop test"
   extends Modelica.Icons.Example;
 
   FlipFlopSR flipFlopSR(              Ts=0.1, q_start=false)
@@ -50,4 +50,4 @@ In this case <FONT FACE=Courier>Ts = 0.1</FONT> and the initial value of the FF 
 <br><br>
 </p>
 </html>"));
-end FliFlop;
+end FlipFlop;
