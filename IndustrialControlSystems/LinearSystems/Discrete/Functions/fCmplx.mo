@@ -12,20 +12,20 @@ function fCmplx "Function process with two complex poles"
   input Real omegan "Natural pulse";
   output Real y "Output";
 protected
-  Real A;
-  Real B;
-  Real C;
-  Real D;
-  Real E;
-  Real F;
-  Real G;
-  Real H;
-  Real I;
-  Real L;
-  Real M;
-  Real N;
-  Real O;
-  Real P;
+  Real A "Weighted step alfa*Ts";
+  Real B "Weighted step (1-alfa)*Ts";
+  Real C "Constant -2";
+  Real D "A squared (A^2)";
+  Real E "Cross term 2*A*B";
+  Real F "B squared (B^2)";
+  Real G "Natural frequency omegan";
+  Real H "2*xi*omegan";
+  Real I "Denominator coefficient";
+  Real L "Intermediate denominator coefficient";
+  Real M "Denominator coefficient for y[n-2]";
+  Real N "Numerator coefficient for u[n]";
+  Real O "Numerator coefficient for u[n-1]";
+  Real P "Numerator coefficient for u[n-2]";
 algorithm
   A := alfa*Ts;
   B := Ts - alfa*Ts;

@@ -10,12 +10,12 @@ function f1p1z "Function lead lag process: k(1+sT1)/(1+sT2)"
   input Real k "Gain";
   output Real y "Output";
 protected
-  Real A;
-  Real B;
-  Real C;
-  Real D;
-  Real E;
-  Real F;
+  Real A "Weighted time step alfa*Ts";
+  Real B "Weighted time step (1-alfa)*Ts";
+  Real C "Numerator coefficient A + T1";
+  Real D "Numerator coefficient B - T1";
+  Real E "Denominator coefficient A + T2";
+  Real F "Denominator coefficient B - T2";
 algorithm
   A := alfa*Ts;
   B := Ts - alfa*Ts;

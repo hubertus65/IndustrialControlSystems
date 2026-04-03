@@ -8,14 +8,14 @@ function fSmoothStep "This function generates a smooth set point signal"
   input Real yfin;
   output Real y;
 protected
-  Real a;
-  Real tp;
-  Real tr;
-  Real parAsc;
-  Real parDisc;
-  Real retta;
-  Real hp;
-  Real m;
+  Real a "Parabolic acceleration coefficient";
+  Real tp "Duration of parabolic segment";
+  Real tr "Duration of linear ramp segment";
+  Real parAsc "Parabolic ascending segment value";
+  Real parDisc "Parabolic descending segment value";
+  Real retta "Linear ramp segment value";
+  Real hp "Height covered by parabolic segment";
+  Real m "Magnitude of maximum slope";
 algorithm
   // modulus of m
   if

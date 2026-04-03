@@ -8,8 +8,8 @@ function fIntegrator "Function integrator"
   input Real k "Gain";
   output Real y "Output";
 protected
-  Real A;
-  Real B;
+  Real A "Weighted time step alfa*Ts";
+  Real B "Weighted time step (1-alfa)*Ts";
 algorithm
   A := alfa*Ts;
   B := Ts - alfa*Ts;

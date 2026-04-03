@@ -9,10 +9,10 @@ function f1Pole "Function first order process : k/(1+s*tau)"
   input Real tau "Pole";
   output Real y "Output";
 protected
-  Real A;
-  Real B;
-  Real C;
-  Real D;
+  Real A "Weighted time step alfa*Ts";
+  Real B "Weighted time step (1-alfa)*Ts";
+  Real C "Denominator coefficient A + tau";
+  Real D "Numerator coefficient B - tau";
 algorithm
   A := alfa*Ts;
   B := Ts - alfa*Ts;

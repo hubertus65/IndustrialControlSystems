@@ -2,7 +2,7 @@ within IndustrialControlSystems.MathOperations.Examples;
 function SumSquare "This function compute the sum square of a vector"
   extends IntegerType.Functions.GeneralFunction;
 protected
-  Integer n;
+  Integer n "Length of input vector";
 algorithm
   n :=size(u,1);
 
