@@ -92,7 +92,8 @@ equation
       satDiff = cs - satin;
 
       // biasing the output
-      CS = if AntiWindup then max(CSmin,min(CSmax,cs + pre(bias))) else cs + pre(bias);
+      // no bias in tracking mode, so that CS = TR
+      CS = if AntiWindup then max(CSmin,min(CSmax,cs + (if ts then 0 else pre(bias)))) else cs + (if ts then 0 else pre(bias));
 
     end when;
   else
@@ -122,7 +123,8 @@ equation
     satDiff = cs - satin;
 
     // biasing the output
-    CS = if AntiWindup then max(CSmin,min(CSmax,cs + bias)) else cs + bias;
+    // no bias in tracking mode, so that CS = TR
+    CS = if AntiWindup then max(CSmin,min(CSmax,cs + (if ts then 0 else bias))) else cs + (if ts then 0 else bias);
 
   end if;
   annotation (Diagram(graphics), Icon(graphics={
@@ -163,8 +165,8 @@ equation
   <li>and Tracking</li>
   </ul><br/>
   
-  In the Automatic mode, the control output is computed with the integral control law, while in the tracking mode<br>
-  it is defined by the input TR.<br/><br/>
+  In the Automatic mode, the control output is computed with the PID control law, while in the tracking mode<br>
+  it is defined by the input TR: CS = TR (saturated if AntiWindup = true), the bias is not added.<br/><br/>
   To note that in the tracking mode the output of the integral block is forced to follow the track reference
   <pre>
               1
