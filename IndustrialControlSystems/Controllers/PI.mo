@@ -69,7 +69,8 @@ equation
     //cs    = if AntiWindup then max(CSmin,min(CSmax,satin)) + bias else satin + bias;
     cs    = if AntiWindup then max(CSmin,min(CSmax,satin)) else satin;
     FBout = cs + (if not ts then -Ti_act*der(FBout) else -eps*der(FBout));
-    CS    = if AntiWindup then max(CSmin,min(CSmax,cs + bias)) else cs + bias;
+    // as in the sampled branch: no bias in tracking mode, so that CS = TR
+    CS    = if AntiWindup then max(CSmin,min(CSmax,cs + (if ts then 0 else bias))) else cs + (if ts then 0 else bias);
   end if;
 
   annotation (Icon(graphics={Text(
@@ -111,7 +112,8 @@ equation
   
   In the Automatic mode, the control output is computed with the proportional+integral control law, while in the tracking mode<br>
   it is defined by the input TR.<br/><br/>
-  To note that in the tracking mode the output signal CS is equal to TR, and the first order filter 
+  To note that in the tracking mode the output signal CS is equal to TR (the bias is not added,
+  in both the continuous and the sampled version), and the first order filter 
   <pre>
      1
   -------- TR(S)
