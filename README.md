@@ -34,6 +34,7 @@ Bug fixes that change simulation results for the configurations listed (details 
  - Continuous `Controllers.I` no longer drifts at `Bias/eps` when `useBIAS = true` (#3)
  - Gain scheduling (`useGS`) now works in the sampled versions of `P`, `PI`, `I` (#5)
  - Tracking mode outputs `TR` without the bias in all controllers (#6)
+ - Bumpless return from tracking to automatic mode in `PI`, `PID`, `I` and the PI autotuners (`P`, `PD`, `D` have no integral state and still step)
 
 #### Main authors
 
