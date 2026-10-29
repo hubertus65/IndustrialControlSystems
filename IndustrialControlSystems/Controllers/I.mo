@@ -38,7 +38,7 @@ equation
         pre(SP) - pre(PV),
         pre(CS) - pre(bias),
         Ts,
-        1/T);
+        1/T_act);
     end when;
   else
     // Continuous time controller
