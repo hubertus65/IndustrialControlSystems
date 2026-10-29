@@ -10,6 +10,7 @@ model PI "Proportional + Integral controller"
   Real FBout "output (and state) of the feedback block 1/(1+sTi)";
   Real cs "Pre-biased Control Signal";
   Real satin "input of the saturation block";
+  Real FBin "input of the feedback (reset) filter: cs, or in tracking mode the value giving CS = TR on release";
   Modelica.Blocks.Interfaces.RealInput Kp_GS if useGS annotation (Placement(transformation(
         extent={{-20,-20},{20,20}},
         rotation=90,
@@ -53,10 +54,13 @@ equation
     when sample(0,Ts) then
       satin =  pre(FBout) + Kp_act*(SP-PV);
       cs    =  if ts then tr else (if AntiWindup then max(CSmin,min(CSmax,satin)) else satin);
+      // bumpless transfer: in tracking mode the reset state follows TR - bias - P action,
+      // so that the automatic output equals TR when tracking ends
+      FBin  =  if ts then (if AntiWindup then max(CSmin,min(CSmax,tr)) else tr) - pre(bias) - Kp_act*(SP-PV) else cs;
       FBout = IndustrialControlSystems.LinearSystems.Discrete.Functions.f1Pole(
         alfa,
-        cs,
-        pre(cs),
+        FBin,
+        pre(FBin),
         pre(FBout),
         Ts,
         1,
@@ -68,7 +72,10 @@ equation
     satin = if ts then tr else FBout + Kp_act*(SP-PV);
     //cs    = if AntiWindup then max(CSmin,min(CSmax,satin)) + bias else satin + bias;
     cs    = if AntiWindup then max(CSmin,min(CSmax,satin)) else satin;
-    FBout = cs + (if not ts then -Ti_act*der(FBout) else -eps*der(FBout));
+    // bumpless transfer: in tracking mode the reset state follows TR - bias - P action,
+    // so that the automatic output equals TR when tracking ends
+    FBin  = if ts then (if AntiWindup then max(CSmin,min(CSmax,tr)) else tr) - bias - Kp_act*(SP-PV) else cs;
+    FBout = FBin + (if not ts then -Ti_act*der(FBout) else -eps*der(FBout));
     // as in the sampled branch: no bias in tracking mode, so that CS = TR
     CS    = if AntiWindup then max(CSmin,min(CSmax,cs + (if ts then 0 else bias))) else cs + (if ts then 0 else bias);
   end if;
@@ -126,7 +133,11 @@ equation
    1+s*eps
   </pre>
   where eps is a small time constant. With such a scheme, the integrator does not diverge while the tracking mode<br>
-  is enabled.
+  is enabled.<br/><br/>
+  <b>Bumpless transfer.</b> In the tracking mode the input of the reset filter is not TR but
+  <code>TR - Bias - Kp*(SP - PV)</code> (TR saturated if AntiWindup = true), i.e. the value of the reset state
+  for which the automatic control law gives CS = TR. When the tracking mode ends, the output therefore continues
+  from TR without a step (after the tracking mode has lasted a few eps).
   </p>
   </HTML>",
           revisions="<html>

@@ -35,6 +35,15 @@ Before, the continuous <code>PI</code>, <code>I</code> (without anti-windup) and
 versions) added the bias. In <code>I</code> the integrator state follows <code>TR - Bias</code>, so the
 return to automatic mode is bumpless. Models without <code>useBIAS</code> are not affected.
 (<a href=\"https://github.com/hubertus65/IndustrialControlSystems/issues/6\">#6</a>)</li>
+<li>Bumpless transfer from tracking to automatic mode: in <code>PI</code>, <code>PID</code>,
+<code>AutoTuning.ATPIrelayNCdigital</code> and <code>AutoTuning.ATPIrelayNCmixedMode</code> the integral
+(reset) state now follows <code>TR - Bias - P</code> (and <code>- D</code> in <code>PID</code>) while tracking,
+instead of <code>TR</code>, so the output continues from <code>TR</code> without a step when tracking ends.
+Before, it jumped by the proportional (and derivative) action plus the bias. <code>I</code> follows
+<code>TR - Bias</code> (see above). The digital <code>PID_2dof</code> controllers are incremental and were
+already bumpless. <code>P</code>, <code>PD</code> and <code>D</code> have no integral state: on release
+their output still steps from <code>TR</code> to the value of their control law.
+Results change only for models that use tracking mode.</li>
 </ul>
 
 <p>Version 2.0.1 Mar. 18, 2026 Made compatible with Modelon Impact by removing a few minor compliance errors. Also fixed name-typos, and updated to MSL 4.1.0.</p>
