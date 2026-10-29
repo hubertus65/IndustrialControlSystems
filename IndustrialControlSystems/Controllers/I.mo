@@ -45,7 +45,9 @@ equation
     CS    = if AntiWindup then max(CSmin,min(CSmax,(if ts then tr else satin))) else satin;
     satin = Iout + bias;
     if not ts then
-      der(Iout)   = 1/T_act*(SP - PV) + 1/eps*(CS - (satin - bias));
+      // Anti-windup pull-back: compare the (possibly saturated) output without bias
+      // with the integrator state. Without saturation CS - bias = Iout and the term is zero.
+      der(Iout)   = 1/T_act*(SP - PV) + 1/eps*((CS - bias) - Iout);
     else
       eps*der(Iout) = -Iout + tr;
     end if;
