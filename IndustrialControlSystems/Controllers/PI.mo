@@ -31,10 +31,10 @@ initial equation
 
   if Ts > 0 then
     // Discrete time initialisation
-    pre(FBout) = if AntiWindup then max(CSmin,min(CSmax,CS_start)) else CS_start - bias - Kp*(SP - PV);
+    pre(FBout) = if AntiWindup then max(CSmin,min(CSmax,CS_start)) else CS_start - bias - Kp_act*(SP - PV);
   else
     // Continuous time initialisation
-    FBout = if AntiWindup then max(CSmin,min(CSmax,CS_start)) else CS_start - bias - Kp*(SP - PV);
+    FBout = if AntiWindup then max(CSmin,min(CSmax,CS_start)) else CS_start - bias - Kp_act*(SP - PV);
   end if;
 
 equation
@@ -51,7 +51,7 @@ equation
   if Ts > 0 then
     // Discrete time controller
     when sample(0,Ts) then
-      satin =  pre(FBout) + Kp*(SP-PV);
+      satin =  pre(FBout) + Kp_act*(SP-PV);
       cs    =  if ts then tr else (if AntiWindup then max(CSmin,min(CSmax,satin)) else satin);
       FBout = IndustrialControlSystems.LinearSystems.Discrete.Functions.f1Pole(
         alfa,
@@ -60,7 +60,7 @@ equation
         pre(FBout),
         Ts,
         1,
-        if not ts then Ti else eps);
+        if not ts then Ti_act else eps);
       CS    =  if AntiWindup then max(CSmin,min(CSmax,cs + (if ts then 0 else pre(bias)))) else cs + (if ts then 0 else pre(bias));
     end when;
   else
