@@ -31,7 +31,8 @@ equation
     when sample(0,Ts) then
       CS    = if AntiWindup then max(CSmin,min(CSmax,(if ts then tr else satin))) else satin;
       satin = Iout + pre(bias);
-      Iout = if ts then tr else
+      // in tracking mode the state follows TR - bias, so that CS = TR and the release is bumpless
+      Iout = if ts then tr - pre(bias) else
         IndustrialControlSystems.LinearSystems.Discrete.Functions.fIntegrator(
         alfa,
         SP - PV,
@@ -47,7 +48,8 @@ equation
     if not ts then
       der(Iout)   = 1/T_act*(SP - PV) + 1/eps*(CS - (satin - bias));
     else
-      eps*der(Iout) = -Iout + tr;
+      // in tracking mode the state follows TR - bias, so that CS = TR and the release is bumpless
+      eps*der(Iout) = -Iout + tr - bias;
     end if;
 
   end if;
@@ -97,7 +99,9 @@ equation
   CS(s) = -------- TR(S)
            1+s*eps
   </pre> 
-  where eps is a small time constant. Thanks to such a scheme, the integrator does not diverge while the tracking mode<br>
+  where eps is a small time constant (with AntiWindup = true, CS = TR saturated). The bias is not added:
+  the integrator state follows TR - Bias, so that the output equals TR and the return to the automatic mode
+  is bumpless. Thanks to such a scheme, the integrator does not diverge while the tracking mode<br>
   is enabled.
   </p>
   </HTML>",
