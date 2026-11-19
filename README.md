@@ -20,6 +20,16 @@ The tests and examples are not part of the library: they are in the separate top
 
 The `Applications` examples stay in the library.
 
+### Regression references
+
+Both libraries have a ModCheck regression suite: `IndustrialControlSystems/Resources/regression_cases.yaml` (the `Applications` examples) and `Tests/Resources/regression_cases.yaml` (every test), with the reference results in `Resources/ReferenceResults/` beside each. To use them with other regression tools (the Modelica Association's csv-compare, OpenModelica's LibraryTesting), run
+
+```
+python3 IndustrialControlSystems/Resources/Testing/export_references.py
+```
+
+It needs Python 3 with numpy and PyYAML, and no simulation tool. It writes CSV and MAT (dsres) files in the MSL `ReferenceResults` layout, with a `conf-openmodelica.json`, to `IndustrialControlSystems/Resources/Testing/Export/` (git-ignored, about 150 MB). `IndustrialControlSystems/Resources/Testing/README.md` explains the output.
+
 ## Releases
 
 - IndustrialControlSystems v2.0.1 (unreleased): Modelon Impact compatibility, MSL 4.1.0, controller bug fixes, documentation and regression tests; tests and examples moved to the separate library `Tests`, with self-checking and MC/DC tests

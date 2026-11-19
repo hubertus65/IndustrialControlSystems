@@ -1,0 +1,10 @@
+# Copyright © 2026 Model Based Innovation LLC.
+# SPDX-License-Identifier: BSD-3-Clause -- the text is BSD-3-Clause.txt beside this file.
+#
+# Settings for export_references.py (see README.md here, and interop.example.yaml for every
+# key). The export goes to Export/ in this folder, which is git-ignored and replaced on each run.
+#
+# Both suites: the library's application examples, and the Tests library's unit and MC/DC tests.
+config:
+  - ../regression_cases.yaml
+  - ../../../Tests/Resources/regression_cases.yaml
