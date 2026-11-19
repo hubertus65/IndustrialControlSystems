@@ -12,7 +12,7 @@ Export a library's ModCheck reference results -- `ReferenceResults/<case>.npz` p
                                                          delimiter "/" and extra name $ClassName
     Cases/<case>/<case>.csv|.mat|...                    every other case: one with modifiers
                                                          of a model whose slot is taken
-    conf-openmodelica.json                              a LibraryTesting config entry for the tree
+    conf-openmodelica.json                              LibraryTesting config entries, one per library
     README.md, provenance.json, LICENSE                 what it is, who produced it, its terms
 
 The export is produced on demand and is not kept: the stored data stays npz, and the export
@@ -89,11 +89,12 @@ def find_license(settings: dict) -> Path | None:
     return None
 
 
-def library_version(settings: dict) -> str:
-    """`library_version:`, else the `version` of the nearest package.mo above interop.yaml."""
-    if settings.get("library_version"):
+def library_version(settings: dict, start: Path | None = None) -> str:
+    """`library_version:`, else the `version` of the nearest package.mo above `start`
+    (default: interop.yaml's folder)."""
+    if settings.get("library_version") and start is None:
         return str(settings["library_version"])
-    for d in settings["_dir"].parents:
+    for d in (start or settings["_dir"]).parents:
         pkg = d / "package.mo"
         if pkg.is_file():
             text = _drop_calls(pkg.read_text(encoding="utf-8", errors="replace"),
@@ -368,25 +369,45 @@ def om_tolerances(slot_cases: list[dict], overrides: dict) -> tuple[dict, list[s
     return out, differ
 
 
+def _library_of(c: dict) -> str:
+    """The library a case's model belongs to: its case list's `library:`, else the model's
+    top-level package."""
+    return c["cfg"].get("library") or c["model"].split(".")[0]
+
+
 def openmodelica_conf(settings: dict, slot_cases: list[dict], cfgs: list[dict]) -> tuple:
-    """One OpenModelicaLibraryTesting config entry for the ReferenceResults/ tree, and the
-    cases its tolerances do not fit. Their getReferenceFileName() builds
-    <referenceFiles>/<Model with . -> delimiter>[.<extra name>].<ext>; with "/" and
-    "$ClassName" that is <Pkg>/<..>/<Model>/<Model>.<ext>."""
+    """OpenModelicaLibraryTesting config entries for the ReferenceResults/ tree, one per
+    library (case lists of several libraries share one export, e.g. a library and its
+    separate test library), and the cases their tolerances do not fit. Their
+    getReferenceFileName() builds <referenceFiles>/<Model with . -> delimiter>[.<extra
+    name>].<ext>; with "/" and "$ClassName" that is <Pkg>/<..>/<Model>/<Model>.<ext>, so
+    every entry points at the same tree. `library:` and `library_version:` in interop.yaml
+    name the first case list's library; each other library's version is the `version` of
+    the nearest package.mo above its case list."""
     om = settings.get("openmodelica") or {}
-    library = settings.get("library") or next((c.get("library") for c in cfgs
-                                               if c.get("library")), None)
-    tols, differ = om_tolerances(slot_cases, om)
-    entry = {
-        "library": library or "LIBRARY",
-        "libraryVersion": library_version(settings),
-        "referenceFiles": str(settings["out"] / "ReferenceResults"),
-        "referenceFileExtension": "mat" if "mat" in settings["formats"] else "csv",
-        "referenceFileNameDelimiter": "/",
-        "referenceFileNameExtraName": "$ClassName",
-        **tols,
-    }
-    return [entry], differ
+    first = next((c.get("library") for c in cfgs[:1] if c.get("library")), None)
+    groups: dict[str, list[dict]] = {}
+    for c in slot_cases:
+        groups.setdefault(_library_of(c), []).append(c)
+    if not groups:
+        groups[first or "LIBRARY"] = []
+    entries, differ = [], []
+    for i, (lib, cases) in enumerate(groups.items()):
+        own = lib == first or (first is None and i == 0)
+        tols, d = om_tolerances(cases, om)
+        differ += d
+        version = (library_version(settings) if own else
+                   library_version(settings, cases[0]["cfg_path"]))
+        entries.append({
+            "library": (settings.get("library") or lib) if own else lib,
+            "libraryVersion": version,
+            "referenceFiles": str(settings["out"] / "ReferenceResults"),
+            "referenceFileExtension": "mat" if "mat" in settings["formats"] else "csv",
+            "referenceFileNameDelimiter": "/",
+            "referenceFileNameExtraName": "$ClassName",
+            **tols,
+        })
+    return entries, differ
 
 
 # ------------------------------------------------------------------ README
@@ -395,7 +416,7 @@ def readme_text(settings, cases, left_out, failed, license_path, conf, differ) -
     other = [c for c in cases if not c["slot"] and c["name"] not in failed]
     producers = sorted({_producer(c["entry"])[0] for c in cases})
     now = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    lib = conf[0]["library"]
+    lib = " and ".join(e["library"] for e in conf)
     out = [f"# Reference results for {lib}",
            "",
            f"Exported {now} by `export_references.py` (ModCheck) from "
@@ -434,8 +455,8 @@ def readme_text(settings, cases, left_out, failed, license_path, conf, differ) -
             "and ModCheck's tolerance, in the MSL's `[ResultCreationLog]` format |",
             "| `Cases/<case>/` | the same four files for a case that is not its model's "
             "entry above: a second case of one model, with modifiers |",
-            "| `conf-openmodelica.json` | an entry for OpenModelicaLibraryTesting's "
-            "configs, pointing at `ReferenceResults/` |",
+            "| `conf-openmodelica.json` | an entry per library for "
+            "OpenModelicaLibraryTesting's configs, all pointing at `ReferenceResults/` |",
             "| `provenance.json` | per case: model, modifiers, settings, producer, record id |",
             "",
             "`time` is the first column; an event appears as two rows with the same time. "
@@ -449,7 +470,7 @@ def readme_text(settings, cases, left_out, failed, license_path, conf, differ) -
             "Compare --mode csvTreeCompare -d \",\" --tolerance 0.002 --reportdir report "
             "<your-results> ReferenceResults",
             "",
-            "# OpenModelica LibraryTesting: put conf-openmodelica.json's entry into a config,",
+            "# OpenModelica LibraryTesting: put conf-openmodelica.json's entries into a config,",
             "# adjust referenceFiles if this folder moved, and run test.py on it",
             "",
             "# Python",
@@ -462,7 +483,8 @@ def readme_text(settings, cases, left_out, failed, license_path, conf, differ) -
             "reference, one output interval wide in time, and re-simulates at 100x the "
             "reference's solver tolerance. `conf-openmodelica.json` sets the nearest "
             "OpenModelica values (`reference_reltolDiffMinMax`, `reference_reltol`, "
-            "`reference_rangeDelta` = 1/ncp), one per library, at the value most cases use "
+            "`reference_rangeDelta` = 1/ncp), one set per library, at the value most of its "
+            "cases use "
             "(override them under `openmodelica:` in interop.yaml). "
             "csv-compare and `diffSimulationResults` define their tubes themselves, so their "
             "verdicts need not agree with ModCheck's. Both also simulate with the model's own "
@@ -474,7 +496,7 @@ def readme_text(settings, cases, left_out, failed, license_path, conf, differ) -
             "line, e.g. `// model Case = Pkg.Model(k=2);`. A tool that simulates the named "
             "model without the modifiers is not expected to reproduce it.",
             "",
-            *([f"OpenModelica's single setting does not fit {len(differ)} case(s); "
+            *([f"OpenModelica's per-library settings do not fit {len(differ)} case(s); "
                "they may pass or fail there for that reason alone:", ""]
               + [f"* {d}" for d in differ] + [""] if differ else []),
             f"## Cases ({len(slot)} in ReferenceResults/, {len(other)} in Cases/)",
