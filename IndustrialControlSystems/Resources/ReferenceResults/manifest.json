@@ -1,0 +1,833 @@
+[
+  {
+    "name": "Applications_ControlProblems_ATProcessControl",
+    "model": "IndustrialControlSystems.Applications.ControlProblems.ATProcessControl",
+    "variables": [
+      "R_FO.CS",
+      "R_FOD.CS",
+      "R_OS.CS",
+      "R_US.CS",
+      "R_i.CS",
+      "R_iD.CS",
+      "time"
+    ],
+    "metrics": {
+      "solver": "CVode",
+      "linear_multistep_method": "BDF",
+      "nonlinear_solver": "Newton",
+      "linear_solver_type": "DENSE",
+      "atol": 1e-08,
+      "rtol": 1e-08,
+      "cpu_time": 3.8759204239977407,
+      "steps": 44549,
+      "rhs_evaluations": 86587,
+      "jacobian_evaluations": 5003,
+      "time_events": 5000,
+      "error_test_failures": 4224,
+      "convergence_failures": 0,
+      "kind": "dynamic"
+    },
+    "descriptor": "impact workspace 'industrialcontrol'",
+    "units": {},
+    "display_units": {},
+    "format": "npz",
+    "bytes": 122421,
+    "record": {
+      "schema": 1,
+      "record_id": "0e1b270053140c5cf943d8a370f87efc10821088e030522c59d22319d35752a7",
+      "executable": {
+        "fmi_version": "2.0",
+        "generation_date": "2026-11-18T22:16:48",
+        "generation_tool": "Optimica Compiler Toolkit",
+        "guid": "c25539444f3dbf7424301ad76bbf982b",
+        "impact_fmu_id": "_ems_applications_controlproblems_atprocesscontrol_20261118_221645_dded422",
+        "model_description_sha256": "46c82d7d49160270b9402c95b9a92525fcf3b3d63c280fd1bff37b7a0b827686"
+      },
+      "experiment": {
+        "case_entry_sha256": "e267e32ead468e9f463e3e376466ab897f2013741d2730f3ea745f0793aa4941",
+        "descriptor": "impact workspace 'industrialcontrol'",
+        "engine": "impact",
+        "impact_case_id": "case_1",
+        "impact_experiment_id": "_ems_applications_controlproblems_atprocesscontrol_20261118_221645_5ce8a61",
+        "released": true,
+        "rtol_factor": 1.0,
+        "workspace": "industrialcontrol",
+        "definition_sha256": "131f9325da4271c350e5acb83a9860927461e32c6f18668d55625dee6bc0520a"
+      },
+      "model": {
+        "class": "IndustrialControlSystems.Applications.ControlProblems.ATProcessControl",
+        "libraries": [
+          {
+            "git_commit": "15f05ba30e05b2ad388b130b732e0e8057505349",
+            "git_dirty": true,
+            "name": "IndustrialControlSystems",
+            "uses": {
+              "Modelica": "4.1.0"
+            },
+            "version": "2.0.1"
+          }
+        ]
+      },
+      "result": {
+        "bytes": 122421,
+        "file": "Applications_ControlProblems_ATProcessControl.npz",
+        "format": "npz",
+        "sha256": "2f33c890255771a43fd5bad2d0e41e3b1011e763233fc024b83e89e583f58db0"
+      },
+      "run": {
+        "utc": "2026-11-18T22:16:54+00:00",
+        "modcheck": {
+          "api": 1,
+          "commit": "5e38acee2eb8de97938e7929a7975e37c4082b34",
+          "dirty": false
+        }
+      }
+    }
+  },
+  {
+    "name": "Applications_ControlProblems_CascadeAntiWindup",
+    "model": "IndustrialControlSystems.Applications.ControlProblems.CascadeAntiWindup",
+    "variables": [
+      "P1.y",
+      "P2.y",
+      "PID_inner.CS",
+      "PID_inner_extLock.CS",
+      "PID_outer.CS",
+      "PID_outer_extLock.CS",
+      "time"
+    ],
+    "metrics": {
+      "solver": "CVode",
+      "linear_multistep_method": "BDF",
+      "nonlinear_solver": "Newton",
+      "linear_solver_type": "DENSE",
+      "atol": 1e-08,
+      "rtol": 1e-08,
+      "cpu_time": 1.9779715059994487,
+      "steps": 37567,
+      "rhs_evaluations": 79317,
+      "jacobian_evaluations": 5000,
+      "time_events": 5000,
+      "error_test_failures": 4461,
+      "convergence_failures": 0,
+      "kind": "dynamic"
+    },
+    "descriptor": "impact workspace 'industrialcontrol'",
+    "units": {},
+    "display_units": {},
+    "format": "npz",
+    "bytes": 172775,
+    "record": {
+      "schema": 1,
+      "record_id": "80153096bbea63685dbf30c1abb79a1090d427d0c90c596c9689c2897e7cc1fd",
+      "executable": {
+        "fmi_version": "2.0",
+        "generation_date": "2026-11-18T21:02:02",
+        "generation_tool": "Optimica Compiler Toolkit",
+        "guid": "cd525d8df6a974685f6c61a1894ff885",
+        "impact_fmu_id": "_ms_applications_controlproblems_cascadeantiwindup_20261118_210158_8613ff6",
+        "model_description_sha256": "5b255ac6337632d9a0daa9061d28dab3095a3566ffa44be19f602e9cf878d555"
+      },
+      "experiment": {
+        "case_entry_sha256": "709e144b0d52aeebc25c9d2d6c64a87e2dc8406ff8df83a78f124d9ff52da75b",
+        "descriptor": "impact workspace 'industrialcontrol'",
+        "engine": "impact",
+        "impact_case_id": "case_1",
+        "impact_experiment_id": "_ms_applications_controlproblems_cascadeantiwindup_20261118_210158_598ae78",
+        "released": true,
+        "rtol_factor": 1.0,
+        "workspace": "industrialcontrol",
+        "definition_sha256": "c837f79235690c01a3293acb1c99a48180deddbffe53013772db4fb019a8d860"
+      },
+      "model": {
+        "class": "IndustrialControlSystems.Applications.ControlProblems.CascadeAntiWindup",
+        "libraries": [
+          {
+            "git_commit": "15f05ba30e05b2ad388b130b732e0e8057505349",
+            "git_dirty": false,
+            "name": "IndustrialControlSystems",
+            "uses": {
+              "Modelica": "4.1.0"
+            },
+            "version": "2.0.1"
+          }
+        ]
+      },
+      "result": {
+        "bytes": 172775,
+        "file": "Applications_ControlProblems_CascadeAntiWindup.npz",
+        "format": "npz",
+        "sha256": "0fe62bcc333a71d3d4c4321e351c758e2d459e3c18fa075a28e24449f639b4e5"
+      },
+      "run": {
+        "utc": "2026-11-18T21:02:05+00:00",
+        "modcheck": {
+          "api": 1,
+          "commit": "5e38acee2eb8de97938e7929a7975e37c4082b34",
+          "dirty": false
+        }
+      }
+    }
+  },
+  {
+    "name": "Applications_ControlProblems_CascadeControl",
+    "model": "IndustrialControlSystems.Applications.ControlProblems.CascadeControl",
+    "variables": [
+      "P1.y",
+      "P2.y",
+      "P_inner.y",
+      "R.CS",
+      "R_inner.CS",
+      "R_outer.CS",
+      "time"
+    ],
+    "metrics": {
+      "solver": "CVode",
+      "linear_multistep_method": "BDF",
+      "nonlinear_solver": "Newton",
+      "linear_solver_type": "DENSE",
+      "atol": 1e-08,
+      "rtol": 1e-08,
+      "cpu_time": 2.243030429002829,
+      "steps": 34900,
+      "rhs_evaluations": 83797,
+      "jacobian_evaluations": 9000,
+      "time_events": 9000,
+      "error_test_failures": 2480,
+      "convergence_failures": 0,
+      "kind": "dynamic"
+    },
+    "descriptor": "impact workspace 'industrialcontrol'",
+    "units": {},
+    "display_units": {},
+    "format": "npz",
+    "bytes": 155718,
+    "record": {
+      "schema": 1,
+      "record_id": "7327b81d8a72a25a3cd792a110b23f79891c5694e7a6a712d3a81400308cfe7d",
+      "executable": {
+        "fmi_version": "2.0",
+        "generation_date": "2026-11-18T21:02:08",
+        "generation_tool": "Optimica Compiler Toolkit",
+        "guid": "c4759ad65b86ceef0e293100fe2d8072",
+        "impact_fmu_id": "_stems_applications_controlproblems_cascadecontrol_20261118_210206_6f131f6",
+        "model_description_sha256": "ee17bee1a390ae9cb91a2220898d985c4b27360c7c3679763a8a2934f0671f90"
+      },
+      "experiment": {
+        "case_entry_sha256": "afce1ae1c09372d25c693f6f8e4a66475b550016d946a0bcf41b76615357a191",
+        "descriptor": "impact workspace 'industrialcontrol'",
+        "engine": "impact",
+        "impact_case_id": "case_1",
+        "impact_experiment_id": "_stems_applications_controlproblems_cascadecontrol_20261118_210205_fe839cf",
+        "released": true,
+        "rtol_factor": 1.0,
+        "workspace": "industrialcontrol",
+        "definition_sha256": "ae220625f607a1aa77a41d17e85ebaae57774889d96768001eafe1246eb2c094"
+      },
+      "model": {
+        "class": "IndustrialControlSystems.Applications.ControlProblems.CascadeControl",
+        "libraries": [
+          {
+            "git_commit": "15f05ba30e05b2ad388b130b732e0e8057505349",
+            "git_dirty": false,
+            "name": "IndustrialControlSystems",
+            "uses": {
+              "Modelica": "4.1.0"
+            },
+            "version": "2.0.1"
+          }
+        ]
+      },
+      "result": {
+        "bytes": 155718,
+        "file": "Applications_ControlProblems_CascadeControl.npz",
+        "format": "npz",
+        "sha256": "94061c06f481727d61cf3e704c3f17ef96134c564d766435da7917cb5e7d69c7"
+      },
+      "run": {
+        "utc": "2026-11-18T21:02:12+00:00",
+        "modcheck": {
+          "api": 1,
+          "commit": "5e38acee2eb8de97938e7929a7975e37c4082b34",
+          "dirty": false
+        }
+      }
+    }
+  },
+  {
+    "name": "Applications_ControlProblems_DecoupledControl_NoDecoupledControl",
+    "model": "IndustrialControlSystems.Applications.ControlProblems.DecoupledControl.NoDecoupledControl",
+    "variables": [
+      "controller1.CS",
+      "controller2.CS",
+      "time"
+    ],
+    "metrics": {
+      "solver": "CVode",
+      "linear_multistep_method": "BDF",
+      "nonlinear_solver": "Newton",
+      "linear_solver_type": "DENSE",
+      "atol": 1e-08,
+      "rtol": 1e-08,
+      "cpu_time": 0.044134474999736995,
+      "steps": 625,
+      "rhs_evaluations": 675,
+      "jacobian_evaluations": 11,
+      "time_events": 1,
+      "error_test_failures": 7,
+      "convergence_failures": 0,
+      "kind": "dynamic"
+    },
+    "descriptor": "impact workspace 'industrialcontrol'",
+    "units": {},
+    "display_units": {},
+    "format": "npz",
+    "bytes": 8756,
+    "record": {
+      "schema": 1,
+      "record_id": "42aeba4e8009bcae8071edc7be12c1c568b5fa65a6d8747006754f02b2b87b8b",
+      "executable": {
+        "fmi_version": "2.0",
+        "generation_date": "2026-11-18T21:02:14",
+        "generation_tool": "Optimica Compiler Toolkit",
+        "guid": "1fd029cd9d5799a7fad721652b276396",
+        "impact_fmu_id": "_ntrolproblems_decoupledcontrol_nodecoupledcontrol_20261118_210212_a6707a4",
+        "model_description_sha256": "3dff83bc66381daea714afa772d19c9de970d4eee3273a49bab9593edce312d6"
+      },
+      "experiment": {
+        "case_entry_sha256": "904dcdea7b0d1866f0083a3792d09d5700584bf2de6111131a387a2ec26d4794",
+        "descriptor": "impact workspace 'industrialcontrol'",
+        "engine": "impact",
+        "impact_case_id": "case_1",
+        "impact_experiment_id": "_ntrolproblems_decoupledcontrol_nodecoupledcontrol_20261118_210212_030faab",
+        "released": true,
+        "rtol_factor": 1.0,
+        "workspace": "industrialcontrol",
+        "definition_sha256": "b241f7caf9d14fb29452186e224981237580e5fe7dc0f01e7d903cbdccaa4e57"
+      },
+      "model": {
+        "class": "IndustrialControlSystems.Applications.ControlProblems.DecoupledControl.NoDecoupledControl",
+        "libraries": [
+          {
+            "git_commit": "15f05ba30e05b2ad388b130b732e0e8057505349",
+            "git_dirty": false,
+            "name": "IndustrialControlSystems",
+            "uses": {
+              "Modelica": "4.1.0"
+            },
+            "version": "2.0.1"
+          }
+        ]
+      },
+      "result": {
+        "bytes": 8756,
+        "file": "Applications_ControlProblems_DecoupledControl_NoDecoupledControl.npz",
+        "format": "npz",
+        "sha256": "d98e215fa9d77def73ede1690c7c6f883bdf1aae6482a94b7ba1f35ca8282850"
+      },
+      "run": {
+        "utc": "2026-11-18T21:02:16+00:00",
+        "modcheck": {
+          "api": 1,
+          "commit": "5e38acee2eb8de97938e7929a7975e37c4082b34",
+          "dirty": false
+        }
+      }
+    }
+  },
+  {
+    "name": "Applications_ControlProblems_PI_ContinuousVsDigital",
+    "model": "IndustrialControlSystems.Applications.ControlProblems.PI_ContinuousVsDigital",
+    "variables": [
+      "P_cont.y",
+      "P_dig.y",
+      "P_disc.y",
+      "R_cont.CS",
+      "R_dig.CS",
+      "R_disc.CS",
+      "time"
+    ],
+    "metrics": {
+      "solver": "CVode",
+      "linear_multistep_method": "BDF",
+      "nonlinear_solver": "Newton",
+      "linear_solver_type": "DENSE",
+      "atol": 1e-08,
+      "rtol": 1e-08,
+      "cpu_time": 1.812576441996498,
+      "steps": 25804,
+      "rhs_evaluations": 61771,
+      "jacobian_evaluations": 5000,
+      "time_events": 5000,
+      "error_test_failures": 3193,
+      "convergence_failures": 0,
+      "kind": "dynamic"
+    },
+    "descriptor": "impact workspace 'industrialcontrol'",
+    "units": {},
+    "display_units": {},
+    "format": "npz",
+    "bytes": 182299,
+    "record": {
+      "schema": 1,
+      "record_id": "ad43aa07870feb3fa32ab101c428b1fc4a6c23fb32f60af3b39e9d0257dbc67f",
+      "executable": {
+        "fmi_version": "2.0",
+        "generation_date": "2026-11-18T21:02:19",
+        "generation_tool": "Optimica Compiler Toolkit",
+        "guid": "69a746381ac3a4afcfdc71556f263359",
+        "impact_fmu_id": "_plications_controlproblems_pi_continuousvsdigital_20261118_210216_363fd22",
+        "model_description_sha256": "b3acbc36919fa643c79e695ae944f7b94e6810f6be9011dd6a61a7004059753c"
+      },
+      "experiment": {
+        "case_entry_sha256": "4de4847cba76cfb4488e09acba4657b11af02d6d0a3f1b8a6dd774f6d654276c",
+        "descriptor": "impact workspace 'industrialcontrol'",
+        "engine": "impact",
+        "impact_case_id": "case_1",
+        "impact_experiment_id": "_plications_controlproblems_pi_continuousvsdigital_20261118_210216_84be044",
+        "released": true,
+        "rtol_factor": 1.0,
+        "workspace": "industrialcontrol",
+        "definition_sha256": "ccf6a1dd37835f4bbf0a9f8eed76e7786bb3447ccac19a038ab56615ab390fd8"
+      },
+      "model": {
+        "class": "IndustrialControlSystems.Applications.ControlProblems.PI_ContinuousVsDigital",
+        "libraries": [
+          {
+            "git_commit": "15f05ba30e05b2ad388b130b732e0e8057505349",
+            "git_dirty": false,
+            "name": "IndustrialControlSystems",
+            "uses": {
+              "Modelica": "4.1.0"
+            },
+            "version": "2.0.1"
+          }
+        ]
+      },
+      "result": {
+        "bytes": 182299,
+        "file": "Applications_ControlProblems_PI_ContinuousVsDigital.npz",
+        "format": "npz",
+        "sha256": "7b77bb143cfdbcf3999b46b966ade9fae06e9c584e359f4ec7a61122dffa3560"
+      },
+      "run": {
+        "utc": "2026-11-18T21:02:22+00:00",
+        "modcheck": {
+          "api": 1,
+          "commit": "5e38acee2eb8de97938e7929a7975e37c4082b34",
+          "dirty": false
+        }
+      }
+    }
+  },
+  {
+    "name": "Applications_ControlProblems_ProcessControl",
+    "model": "IndustrialControlSystems.Applications.ControlProblems.ProcessControl",
+    "variables": [
+      "R_FO.CS",
+      "R_FOD.CS",
+      "R_OS.CS",
+      "R_US.CS",
+      "R_i.CS",
+      "R_iD.CS",
+      "time"
+    ],
+    "metrics": {
+      "solver": "CVode",
+      "linear_multistep_method": "BDF",
+      "nonlinear_solver": "Newton",
+      "linear_solver_type": "DENSE",
+      "atol": 1e-08,
+      "rtol": 1e-08,
+      "cpu_time": 0.10494541699881665,
+      "steps": 2566,
+      "rhs_evaluations": 3494,
+      "jacobian_evaluations": 48,
+      "time_events": 1,
+      "error_test_failures": 195,
+      "convergence_failures": 0,
+      "kind": "dynamic"
+    },
+    "descriptor": "impact workspace 'industrialcontrol'",
+    "units": {},
+    "display_units": {},
+    "format": "npz",
+    "bytes": 20456,
+    "record": {
+      "schema": 1,
+      "record_id": "2390def3888b23fa99ac3dd4e4633179f1ee6f2b3571761aa049cc2e451b4d8c",
+      "executable": {
+        "fmi_version": "2.0",
+        "generation_date": "2026-11-18T21:02:25",
+        "generation_tool": "Optimica Compiler Toolkit",
+        "guid": "3bc92617818ba20d408153b1980f54c0",
+        "impact_fmu_id": "_stems_applications_controlproblems_processcontrol_20261118_210222_64c49da",
+        "model_description_sha256": "6d07db2c2601512aeb4fe9c3efaa1ff515bf57f54fe76740cffea828284fb27a"
+      },
+      "experiment": {
+        "case_entry_sha256": "c478caee8f6becfeafb6641708e4694b52f5b45b014ca1e98320ed9afb11b7fa",
+        "descriptor": "impact workspace 'industrialcontrol'",
+        "engine": "impact",
+        "impact_case_id": "case_1",
+        "impact_experiment_id": "_stems_applications_controlproblems_processcontrol_20261118_210222_b25140f",
+        "released": true,
+        "rtol_factor": 1.0,
+        "workspace": "industrialcontrol",
+        "definition_sha256": "8eac91d4d16fa46f4f909ec66a50e1cdfa2613444cdda240a88fb5d0a600d139"
+      },
+      "model": {
+        "class": "IndustrialControlSystems.Applications.ControlProblems.ProcessControl",
+        "libraries": [
+          {
+            "git_commit": "15f05ba30e05b2ad388b130b732e0e8057505349",
+            "git_dirty": false,
+            "name": "IndustrialControlSystems",
+            "uses": {
+              "Modelica": "4.1.0"
+            },
+            "version": "2.0.1"
+          }
+        ]
+      },
+      "result": {
+        "bytes": 20456,
+        "file": "Applications_ControlProblems_ProcessControl.npz",
+        "format": "npz",
+        "sha256": "2b27f21005b9db847574fea4da9c3337d3d082b4e5661fc2a509af91d1870ed4"
+      },
+      "run": {
+        "utc": "2026-11-18T21:02:26+00:00",
+        "modcheck": {
+          "api": 1,
+          "commit": "5e38acee2eb8de97938e7929a7975e37c4082b34",
+          "dirty": false
+        }
+      }
+    }
+  },
+  {
+    "name": "Applications_ControlStrategies_LeadLagFilter",
+    "model": "IndustrialControlSystems.Applications.ControlStrategies.LeadLagFilter",
+    "variables": [
+      "leadLagFilter.y",
+      "lowPassFilter.y",
+      "sensor.y",
+      "time"
+    ],
+    "metrics": {
+      "solver": "CVode",
+      "linear_multistep_method": "BDF",
+      "nonlinear_solver": "Newton",
+      "linear_solver_type": "DENSE",
+      "atol": 1e-08,
+      "rtol": 1e-08,
+      "cpu_time": 0.747287555001094,
+      "steps": 28329,
+      "rhs_evaluations": 52912,
+      "jacobian_evaluations": 2400,
+      "time_events": 2400,
+      "error_test_failures": 2565,
+      "convergence_failures": 0,
+      "kind": "dynamic"
+    },
+    "descriptor": "impact workspace 'industrialcontrol'",
+    "units": {},
+    "display_units": {},
+    "format": "npz",
+    "bytes": 49910,
+    "record": {
+      "schema": 1,
+      "record_id": "abcad036a00baa2b35ab973fb66f7e55ab7a13df06efa386203d1141c4e37110",
+      "executable": {
+        "fmi_version": "2.0",
+        "generation_date": "2026-11-18T21:02:29",
+        "generation_tool": "Optimica Compiler Toolkit",
+        "guid": "b840a92b4e4d99d3460bdc8c75f37431",
+        "impact_fmu_id": "_tems_applications_controlstrategies_leadlagfilter_20261118_210227_30dab81",
+        "model_description_sha256": "417e05b6d76283cfddafceca73b02184fafd39c1a0948a5d6fab086d153deea5"
+      },
+      "experiment": {
+        "case_entry_sha256": "edea65861b78582c7444f6e6e3d8738c3e2b54e5a105333938be80d34f8ebe3d",
+        "descriptor": "impact workspace 'industrialcontrol'",
+        "engine": "impact",
+        "impact_case_id": "case_1",
+        "impact_experiment_id": "_tems_applications_controlstrategies_leadlagfilter_20261118_210226_e94bd7c",
+        "released": true,
+        "rtol_factor": 1.0,
+        "workspace": "industrialcontrol",
+        "definition_sha256": "bf55f02d469fe4b8900f5e4f271cd03f7bba6d42adbeb43bf8945c94b618e4c1"
+      },
+      "model": {
+        "class": "IndustrialControlSystems.Applications.ControlStrategies.LeadLagFilter",
+        "libraries": [
+          {
+            "git_commit": "15f05ba30e05b2ad388b130b732e0e8057505349",
+            "git_dirty": false,
+            "name": "IndustrialControlSystems",
+            "uses": {
+              "Modelica": "4.1.0"
+            },
+            "version": "2.0.1"
+          }
+        ]
+      },
+      "result": {
+        "bytes": 49910,
+        "file": "Applications_ControlStrategies_LeadLagFilter.npz",
+        "format": "npz",
+        "sha256": "4e0bfda24e35ade4f4c0bb01bd4e54611df4c7c4aa861e4b89b93b5f4ce16712"
+      },
+      "run": {
+        "utc": "2026-11-18T21:02:31+00:00",
+        "modcheck": {
+          "api": 1,
+          "commit": "5e38acee2eb8de97938e7929a7975e37c4082b34",
+          "dirty": false
+        }
+      }
+    }
+  },
+  {
+    "name": "Applications_ProcessControl_CascadeLevelControl",
+    "model": "IndustrialControlSystems.Applications.ProcessControl.CascadeLevelControl",
+    "variables": [
+      "PI_Level.CS",
+      "PI_Valve.CS",
+      "div.y",
+      "sub.y",
+      "time"
+    ],
+    "metrics": {
+      "solver": "CVode",
+      "linear_multistep_method": "BDF",
+      "nonlinear_solver": "Newton",
+      "linear_solver_type": "DENSE",
+      "rtol": 1e-08,
+      "cpu_time": 0.11127406099694781,
+      "steps": 4195,
+      "rhs_evaluations": 5920,
+      "jacobian_evaluations": 101,
+      "time_events": 2,
+      "error_test_failures": 311,
+      "convergence_failures": 12,
+      "kind": "dynamic"
+    },
+    "descriptor": "impact workspace 'industrialcontrol'",
+    "units": {},
+    "display_units": {},
+    "format": "npz",
+    "bytes": 13093,
+    "record": {
+      "schema": 1,
+      "record_id": "cbf98fced057e727ca9f7c3e17a67b5ac8e48957cc59a0a2e267182b8eaf1b57",
+      "executable": {
+        "fmi_version": "2.0",
+        "generation_date": "2026-11-18T21:02:35",
+        "generation_tool": "Optimica Compiler Toolkit",
+        "guid": "d5fc74caeec99350c1d062bb78c84c3b",
+        "impact_fmu_id": "_s_applications_processcontrol_cascadelevelcontrol_20261118_210231_bf94063",
+        "model_description_sha256": "9306ca946cc038903ea8875f127ea856f5bf985a6f99dce91412bd690a36c5f9"
+      },
+      "experiment": {
+        "case_entry_sha256": "72bb8ec07d91b6e45a46a30ff158d80f7ffaf0388cea0be1357a885cf158141c",
+        "descriptor": "impact workspace 'industrialcontrol'",
+        "engine": "impact",
+        "impact_case_id": "case_1",
+        "impact_experiment_id": "_s_applications_processcontrol_cascadelevelcontrol_20261118_210231_eebb940",
+        "released": true,
+        "rtol_factor": 1.0,
+        "workspace": "industrialcontrol",
+        "definition_sha256": "c317faaf06bb326c0e2bb641314a84f2d933ff15ab67dfdebc0a118e6d9958ce"
+      },
+      "model": {
+        "class": "IndustrialControlSystems.Applications.ProcessControl.CascadeLevelControl",
+        "libraries": [
+          {
+            "git_commit": "15f05ba30e05b2ad388b130b732e0e8057505349",
+            "git_dirty": false,
+            "name": "IndustrialControlSystems",
+            "uses": {
+              "Modelica": "4.1.0"
+            },
+            "version": "2.0.1"
+          }
+        ]
+      },
+      "result": {
+        "bytes": 13093,
+        "file": "Applications_ProcessControl_CascadeLevelControl.npz",
+        "format": "npz",
+        "sha256": "a886de021b7f9114e1142bc6371619f3390e265c37ded995d573dfc8cc62aaaa"
+      },
+      "run": {
+        "utc": "2026-11-18T21:02:36+00:00",
+        "modcheck": {
+          "api": 1,
+          "commit": "5e38acee2eb8de97938e7929a7975e37c4082b34",
+          "dirty": false
+        }
+      }
+    }
+  },
+  {
+    "name": "Applications_ProcessControl_LevelControl",
+    "model": "IndustrialControlSystems.Applications.ProcessControl.LevelControl",
+    "variables": [
+      "PI_Level.CS",
+      "div.y",
+      "sub.y",
+      "time"
+    ],
+    "metrics": {
+      "solver": "CVode",
+      "linear_multistep_method": "BDF",
+      "nonlinear_solver": "Newton",
+      "linear_solver_type": "DENSE",
+      "rtol": 1e-08,
+      "cpu_time": 0.43331885000225157,
+      "steps": 14088,
+      "rhs_evaluations": 22879,
+      "jacobian_evaluations": 942,
+      "time_events": 900,
+      "error_test_failures": 809,
+      "convergence_failures": 0,
+      "kind": "dynamic"
+    },
+    "descriptor": "impact workspace 'industrialcontrol'",
+    "units": {},
+    "display_units": {},
+    "format": "npz",
+    "bytes": 8929,
+    "record": {
+      "schema": 1,
+      "record_id": "98e9a6f660c73a339d213c90304133f809f9922fb693e9ffc97fcfabe3b80c84",
+      "executable": {
+        "fmi_version": "2.0",
+        "generation_date": "2026-11-18T22:16:57",
+        "generation_tool": "Optimica Compiler Toolkit",
+        "guid": "81b0072ea95e6f72435608506ea8aad0",
+        "impact_fmu_id": "_lsystems_applications_processcontrol_levelcontrol_20261118_221654_c826ca9",
+        "model_description_sha256": "8adccae1b04a50395dbb02f488418da5421c1dc8d8f1f86c2c50b90ae1e93f6a"
+      },
+      "experiment": {
+        "case_entry_sha256": "945be5dae30f3cb7b2ef0cff8766ba23813c93f69ce48fb7edda8bd53ff24ea1",
+        "descriptor": "impact workspace 'industrialcontrol'",
+        "engine": "impact",
+        "impact_case_id": "case_1",
+        "impact_experiment_id": "_lsystems_applications_processcontrol_levelcontrol_20261118_221654_819e850",
+        "released": true,
+        "rtol_factor": 1.0,
+        "workspace": "industrialcontrol",
+        "definition_sha256": "d582ed69172b9c440cbd05228dc2190a522f93ea2e0d37f5b27b8f1e0112e655"
+      },
+      "model": {
+        "class": "IndustrialControlSystems.Applications.ProcessControl.LevelControl",
+        "libraries": [
+          {
+            "git_commit": "15f05ba30e05b2ad388b130b732e0e8057505349",
+            "git_dirty": true,
+            "name": "IndustrialControlSystems",
+            "uses": {
+              "Modelica": "4.1.0"
+            },
+            "version": "2.0.1"
+          }
+        ]
+      },
+      "result": {
+        "bytes": 8929,
+        "file": "Applications_ProcessControl_LevelControl.npz",
+        "format": "npz",
+        "sha256": "d2a9d1dc072138d874dbdd645c591bfbde4a7c5c22fbfe1ee11c5e6f179ab887"
+      },
+      "run": {
+        "utc": "2026-11-18T22:16:59+00:00",
+        "modcheck": {
+          "api": 1,
+          "commit": "5e38acee2eb8de97938e7929a7975e37c4082b34",
+          "dirty": false
+        }
+      }
+    }
+  },
+  {
+    "name": "Applications_ProcessControl_VelocityDriveControl_AutoTuning",
+    "model": "IndustrialControlSystems.Applications.ProcessControl.VelocityDriveControl_AutoTuning",
+    "variables": [
+      "ATPIdigital.CS",
+      "noiseGen.y",
+      "time"
+    ],
+    "metrics": {
+      "solver": "CVode",
+      "linear_multistep_method": "BDF",
+      "nonlinear_solver": "Newton",
+      "linear_solver_type": "DENSE",
+      "rtol": 1e-08,
+      "cpu_time": 0.7108125059967279,
+      "steps": 45521,
+      "rhs_evaluations": 64069,
+      "jacobian_evaluations": 1303,
+      "time_events": 1200,
+      "error_test_failures": 1962,
+      "convergence_failures": 0,
+      "kind": "dynamic"
+    },
+    "descriptor": "impact workspace 'industrialcontrol'",
+    "units": {},
+    "display_units": {},
+    "format": "npz",
+    "bytes": 15777,
+    "record": {
+      "schema": 1,
+      "record_id": "73a8f4f2d60017c466a7442c3f311557c51678590b94fc2787fd3677e53d04a4",
+      "executable": {
+        "fmi_version": "2.0",
+        "generation_date": "2026-11-18T21:02:45",
+        "generation_tool": "Optimica Compiler Toolkit",
+        "guid": "4cd14836a0f9b764e48dbe9722a4e761",
+        "impact_fmu_id": "_ns_processcontrol_velocitydrivecontrol_autotuning_20261118_210242_8a83ebb",
+        "model_description_sha256": "5ff5e948bfec2772638af886a55dae3ef9930eab5e5b95bfe1d0c37e46a2e83e"
+      },
+      "experiment": {
+        "case_entry_sha256": "cfac80d696b36cc27428db190b0da367e39c630bcfce2732b0d4b2571a7c7da3",
+        "descriptor": "impact workspace 'industrialcontrol'",
+        "engine": "impact",
+        "impact_case_id": "case_1",
+        "impact_experiment_id": "_ns_processcontrol_velocitydrivecontrol_autotuning_20261118_210242_1ad822a",
+        "released": true,
+        "rtol_factor": 1.0,
+        "workspace": "industrialcontrol",
+        "definition_sha256": "0e65276514e22c4b56f42eecef6eb18bf1cde912ccaa6690f98f23d6b73543a6"
+      },
+      "model": {
+        "class": "IndustrialControlSystems.Applications.ProcessControl.VelocityDriveControl_AutoTuning",
+        "libraries": [
+          {
+            "git_commit": "15f05ba30e05b2ad388b130b732e0e8057505349",
+            "git_dirty": false,
+            "name": "IndustrialControlSystems",
+            "uses": {
+              "Modelica": "4.1.0"
+            },
+            "version": "2.0.1"
+          }
+        ]
+      },
+      "result": {
+        "bytes": 15777,
+        "file": "Applications_ProcessControl_VelocityDriveControl_AutoTuning.npz",
+        "format": "npz",
+        "sha256": "df4d6c195c355234f66e5281f9137701367a76ce5c3d1551138b1318420fdf50"
+      },
+      "run": {
+        "utc": "2026-11-18T21:02:47+00:00",
+        "modcheck": {
+          "api": 1,
+          "commit": "5e38acee2eb8de97938e7929a7975e37c4082b34",
+          "dirty": false
+        }
+      }
+    }
+  }
+]
