@@ -1,0 +1,23 @@
+# Copyright © 2026 Model Based Innovation LLC.
+# SPDX-License-Identifier: BSD-3-Clause -- the text is BSD-3-Clause.txt in the export bundle
+# (ModCheck/Resources/Testing/ in ModCheck, Resources/Testing/ in a library carrying a copy).
+#
+# Settings for export_references.py. Copy to interop.yaml beside the script, in the
+# library's Resources/Testing/. Paths are relative to this file. Only `config:` is required.
+
+config: ../ModCheck/regression_cases.yaml   # a ModCheck case list, or a list of them
+
+# Everything below is optional; the values shown are the defaults.
+# formats: [csv, mat]              # which data files each case gets
+# references: ReferenceResults     # the stored npz, relative to each case list
+# out: Export                      # replaced on every export; add it to .gitignore
+# license: ../../../LICENSE        # default: the first LICENSE* found above this file
+# library: MyLibrary               # default: the case list's `library:`
+# library_version: "1.0.0"         # default: `version` in the nearest package.mo above
+# model_case:                      # which case is a model's entry in ReferenceResults/
+#   MyLibrary.Examples.Foo: Foo_nominal   #   (default: its first case without modifiers)
+# mat: {time_name: time}           # "Time" for Dymola-style files (OpenModelica ignores "Time")
+# openmodelica:                    # conf-openmodelica.json's tube settings; default: the
+#   reference_reltol: 0.001        #   value most cases use (tolerance, and 1/ncp for
+#   reference_reltolDiffMinMax: 0.001   #   rangeDelta); README.md lists the cases that differ
+#   reference_rangeDelta: 0.002

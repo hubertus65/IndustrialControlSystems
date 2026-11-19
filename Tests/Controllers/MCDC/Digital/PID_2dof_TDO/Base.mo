@@ -39,10 +39,11 @@ model Base "MC/DC base: IndustrialControlSystems.Controllers.Digital.PID_2dof_TD
     initType=Modelica.Blocks.Types.Init.InitialState)
     "Continuous ideal: Kp*(b + 1/(s*Ti) + c*s*Td/(1 + s*Td/N)), Kp = 2, Ti = 5, N = 5, b = c = 1"
     annotation (Placement(transformation(extent={{-30,-170},{-10,-150}})));
-  Modelica.Blocks.Math.Mean csMean(f=1/0.1, x0=0) "Mean of CS over each sampling period"
+  Modelica.Blocks.Math.Mean csMean(f=1, x0=0) "Mean of CS over each 1 s window (10 periods)"
     annotation (Placement(transformation(extent={{30,-50},{50,-30}})));
-  discrete Real csPrev(start=0, fixed=true) "Control signal of the previous sampling period";
-  discrete Real csLast(start=0, fixed=true) "Control signal sampled at the start of a period";
+  Modelica.Blocks.Math.Mean expMean(f=1, x0=0)
+    "Mean of the limited control signal over the same 1 s windows"
+    annotation (Placement(transformation(extent={{30,-80},{50,-60}})));
   discrete Real csMan0(start=0, fixed=true) "Control signal when manual mode starts";
   discrete Real csInc0(start=0, fixed=true) "Control signal when F_inc rises the first time";
   discrete Real csDec0(start=0, fixed=true) "Control signal when F_dec rises the second time";
@@ -144,11 +145,11 @@ model Base "MC/DC base: IndustrialControlSystems.Controllers.Digital.PID_2dof_TD
     annotation (Placement(transformation(extent={{100,-110},{120,-90}})));
   Tests.Utilities.CheckRealWhile pwmMean(
       actual=csMean.y,
-      expected=max(CSmin, min(CSmax, csPrev)),
+      expected=expMean.y,
       absTol=0.02,
-      tStart=0.1*1.5,
-      dt=0.1)
-    "Time-division output: its mean over each period = the control signal of that period, limited"
+      tStart=1.5,
+      dt=1)
+    "Time-division output: its mean over each 1 s window = the mean of the control signal, limited"
     annotation (Placement(transformation(extent={{70,-140},{90,-120}})));
   Boolean passed = chkStart.passed and chkRef.passed and chkTrack.passed and chkMan.passed and chkFrozen.passed and incPasses.passed and decPasses.passed and limits.passed and recovers.passed and exceedsMax.passed and exceedsMin.passed and satHigh.passed and satNone.passed and pwmLevels.passed and pwmMean.passed
     "true if every enabled check of this configuration passed";
@@ -163,10 +164,7 @@ equation
   connect(fDec.y, dut.Fdec) annotation (Line(points={{-49,-130},{2,-130},{2,-8}}, color={255,0,255}));
   connect(spRef.y, ref.u) annotation (Line(points={{-49,-160},{-32,-160}}, color={0,0,127}));
   connect(dut.CS, csMean.u) annotation (Line(points={{9,0},{20,0},{20,-40},{28,-40}}, color={0,0,127}));
-  when sample(0.1, 0.1) then
-    csPrev = pre(csLast);
-    csLast = dut.cs;
-  end when;
+  expMean.u = max(CSmin, min(CSmax, dut.cs));
   when time >= 6.52 then
     csMan0 = dut.cs;
   end when;
@@ -201,6 +199,6 @@ F_inc window), CSinc = 0.01. Forbid (<code>useForbid</code>): F_inc on [3.52, 7.
 and [24.02, 26.02] (falling); F_dec on [10.02, 12.02] (rising) and [17.52, 19.52] (falling, after the derivative kick of the set-point reversal has decayed).</p>
 <p>The output is time-division (PWM) between CSmin and CSmax, so the checks of the control law use the public internal signal <code>dut.cs</code>; <code>pwmLevels</code> and <code>pwmMean</code> check the output itself.</p>
 <p>Checks (each enabled only where it applies; <code>passed</code> is their conjunction):</p>
-<ul><li><code>chkStart</code>: Output before the first set-point step: 0</li><li><code>chkRef</code>: Automatic mode without limits: control signal = continuous ideal + bias, within 0.05 + 5 %, except in the 2 s after a set-point step (the discretised derivative filter decays differently)</li><li><code>chkTrack</code>: Tracking (and not manual): control signal = TR (limited if AntiWindup), from the second sample</li><li><code>chkMan</code>: Manual (MAN on [6.52, 7.52]): control signal rises by CSinc = 0.01 per sample, also while TS or F_inc</li><li><code>chkFrozen</code>: F_inc while the signal rises, F_dec while it falls: the control signal is held</li><li><code>incPasses</code>: F_dec while the signal rises: the rise passes</li><li><code>decPasses</code>: F_inc while the signal falls: the fall passes</li><li><code>limits</code>: AntiWindup: the control signal stays in [CSmin, CSmax]</li><li><code>recovers</code>: AntiWindup: the control signal leaves CSmax within 3 s of the set-point reversal</li><li><code>exceedsMax</code>: No anti-windup: above CSmax</li><li><code>exceedsMin</code>: No anti-windup: below CSmin</li><li><code>satHigh</code>: AntiWindup: satHI occurs</li><li><code>satNone</code>: No anti-windup: satHI, satLOW stay false</li><li><code>pwmLevels</code>: Time-division output: CS is always CSmin or CSmax</li><li><code>pwmMean</code>: Time-division output: its mean over each period = the control signal of that period, limited</li></ul>
+<ul><li><code>chkStart</code>: Output before the first set-point step: 0</li><li><code>chkRef</code>: Automatic mode without limits: control signal = continuous ideal + bias, within 0.05 + 5 %, except in the 2 s after a set-point step (the discretised derivative filter decays differently)</li><li><code>chkTrack</code>: Tracking (and not manual): control signal = TR (limited if AntiWindup), from the second sample</li><li><code>chkMan</code>: Manual (MAN on [6.52, 7.52]): control signal rises by CSinc = 0.01 per sample, also while TS or F_inc</li><li><code>chkFrozen</code>: F_inc while the signal rises, F_dec while it falls: the control signal is held</li><li><code>incPasses</code>: F_dec while the signal rises: the rise passes</li><li><code>decPasses</code>: F_inc while the signal falls: the fall passes</li><li><code>limits</code>: AntiWindup: the control signal stays in [CSmin, CSmax]</li><li><code>recovers</code>: AntiWindup: the control signal leaves CSmax within 3 s of the set-point reversal</li><li><code>exceedsMax</code>: No anti-windup: above CSmax</li><li><code>exceedsMin</code>: No anti-windup: below CSmin</li><li><code>satHigh</code>: AntiWindup: satHI occurs</li><li><code>satNone</code>: No anti-windup: satHI, satLOW stay false</li><li><code>pwmLevels</code>: Time-division output: CS is always CSmin or CSmax</li><li><code>pwmMean</code>: Time-division output: its mean over each 1 s window (10 periods) = the mean of the control signal <code>dut.cs</code>, limited to [CSmin, CSmax], over the same window, within 0.02. Both are integrated, so a TDO period that lasts TDsteps + 1 sub-steps (the counter sums Ts/TDsteps in floating point) moves both signals alike and cancels. What remains is the duty quantisation, less than 1/TDsteps = 0.01 and always of one sign, plus a period straddling a window edge. A per-period check saw both sub-step errors at once and landed exactly on 0.02.</li></ul>
 </html>"));
 end Base;
